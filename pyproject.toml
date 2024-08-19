@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hyper-python"
+version = "0.1.0"
+description = "A hyper python project"
+authors = ["ryanshores <ryan.shores@me.com>"]
+readme = "README.md"
+homepage = "https://github.com/ryanshores/hyper-python"
+repository = "https://github.com/ryanshores/hyper-python"
+keywords = ["hyper"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
