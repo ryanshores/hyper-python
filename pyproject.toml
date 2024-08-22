@@ -11,6 +11,8 @@ keywords = ["hyper"]
 [tool.poetry.dependencies]
 python = "^3.12"
 click = "^8.1.7"
+requests = "^2.32.3"
+image = "^1.5.33"
 
 
 [build-system]
@@ -19,3 +21,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 hyper-python = "hyper_python.console:main"
+
