@@ -15,10 +15,28 @@ requests = "^2.32.3"
 image = "^1.5.33"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+coverage = "^7.6.1"
+pytest-mock = "^3.14.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 hyper-python = "hyper_python.console:main"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["hyper_python"]
+
+[tool.coverge.report]
+show_missing = true
+fail_under = 100
+
 
