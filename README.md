@@ -27,5 +27,5 @@ poetry run hyper-python
 
 ### test
 ```bash
-poetry run pytest -com
+poetry run pytest --cov
 ```
