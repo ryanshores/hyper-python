@@ -1,19 +1,15 @@
 import click
-import requests
 import textwrap
 
-from . import __version__
-from . import image_to_ascii_converter
+from . import __version__, wikipedia, asciiHelper
 
-API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 
 @click.command()
+@click.option('--language', '-l', default='en', help="Language edition of Wikipedia", metavar='LANG', show_default=True)
 @click.version_option(version=__version__)
-def main():
+def main(language):
     """The hyper python project."""
-    with requests.get(API_URL) as response:
-        response.raise_for_status()
-        data = response.json()
+    data = wikipedia.random_page(language=language)
 
     title = data["title"]
     extract = data["extract"]
@@ -21,4 +17,4 @@ def main():
 
     click.secho(title, fg="green")
     click.echo(textwrap.fill(extract))
-    click.echo(image_to_ascii_converter.convert_image_url_to_ascii(thumbnail))
+    click.echo(asciiHelper.convert_image_url_to_ascii(thumbnail))
