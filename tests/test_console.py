@@ -11,7 +11,7 @@ def runner():
 
 @pytest.fixture
 def mock_wiki_page(mocker):
-    return mocker.patch('hyper_python.wikipedia.random_page')
+    return mocker.patch('hyper_python.loader.wikipedia.random_page')
 
 
 def test_console(runner, mock_requests_get):
@@ -47,4 +47,8 @@ def test_main_prints_error_on_request_error(runner, mock_requests_get):
 def test_with_language(runner, mock_wiki_page):
     runner.invoke(console.main, ['--language', 'pl'])
     mock_wiki_page.assert_called_with(language='pl')
+
+def test_ercot_fuel_mix(runner):
+    result = runner.invoke(console.ercot_command)
+    assert result.exit_code == 0
 

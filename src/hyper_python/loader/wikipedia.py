@@ -1,7 +1,7 @@
 import click
 import requests
 
-from . import LANG_EN, WIKI_API_URL
+from .. import LANG_EN, WIKI_API_URL
 
 def random_page(language=LANG_EN):
     API_URL = WIKI_API_URL.format(language=language)

@@ -27,6 +27,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 hyper-python = "hyper_python.console:main"
+ercot = "hyper_python.console:ercot_command"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
