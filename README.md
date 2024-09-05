@@ -24,6 +24,13 @@ poetry install
 ```bash
 poetry run hyper-python
 ```
+#### run - console - language
+```bash
+poetry run hyper-python --langauge fr 
+```
+```bash
+poetry run hyper-python -l fr 
+```
 
 ### test
 ```bash
