@@ -1,1 +1,0 @@
-poetry run hyper-python -l fr
