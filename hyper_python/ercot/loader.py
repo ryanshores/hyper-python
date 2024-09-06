@@ -1,6 +1,7 @@
 import requests
 
-ENERGY_MIX_URL = 'https://www.ercot.com/api/1/services/read/dashboards/fuel-mix.json'
+ENERGY_MIX_URL = "https://www.ercot.com/api/1/services/read/dashboards/fuel-mix.json"
+
 
 def load_energy_mix():
     """Downloads the energy mix JSON from ERCOT"""

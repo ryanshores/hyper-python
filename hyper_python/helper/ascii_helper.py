@@ -3,7 +3,7 @@ from PIL import Image
 from io import BytesIO
 
 # Grayscale levels mapped to a set of ASCII characters
-ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
+ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
 
 
 def resize_image(image, new_width=100):
@@ -16,7 +16,7 @@ def resize_image(image, new_width=100):
 
 
 def grayify(image):
-    return image.convert('L')
+    return image.convert("L")
 
 
 def pixels_to_ascii(image):
@@ -25,6 +25,7 @@ def pixels_to_ascii(image):
     for pixel in pixels:
         ascii_str += ASCII_CHARS[pixel // 25]
     return ascii_str
+
 
 def convert_image_to_ascii(image, new_width=100):
     # Convert image to grayscale image
@@ -38,17 +39,18 @@ def convert_image_to_ascii(image, new_width=100):
     ascii_str_len = len(ascii_str)
     ascii_img = ""
     for i in range(0, ascii_str_len, img_width):
-        ascii_img += ascii_str[i:i + img_width] + "\n"
+        ascii_img += ascii_str[i : i + img_width] + "\n"
 
     return ascii_img
-
 
 
 def convert_image_url_to_ascii(image_url, new_width=100):
     try:
         response = requests.get(
             image_url,
-            headers={'User-Agent': 'CoolBot/0.0 (https://example.org/coolbot/; coolbot@example.org)'}
+            headers={
+                "User-Agent": "CoolBot/0.0 (https://example.org/coolbot/; coolbot@example.org)"
+            },
         )
         image = Image.open(BytesIO(response.content))
     except Exception as e:

@@ -37,7 +37,10 @@ def get_earlist_date(dates: [datetime]) -> datetime:
     """
     return max(dates)
 
-def find_index_of_most_recent_date_str(dates: [str], date_format: str = DATE_FORMAT) -> int:
+
+def find_index_of_most_recent_date_str(
+    dates: [str], date_format: str = DATE_FORMAT
+) -> int:
     """
     :param dates: List of date strings to be evaluated.
     :param date_format: Format in which the dates are specified.

@@ -16,11 +16,14 @@ from .ercot import service as ercot_service
 
 
 @click.command()
-@click.option('--language', '-l',
-              default='en',
-              help="Language edition of Wikipedia",
-              metavar='LANG',
-              show_default=True)
+@click.option(
+    "--language",
+    "-l",
+    default="en",
+    help="Language edition of Wikipedia",
+    metavar="LANG",
+    show_default=True,
+)
 @click.version_option(version=__version__)
 def main(language):
     """
@@ -54,11 +57,11 @@ def ercot_command():
 
         rounded_pct = int(renewable_percentage // 5)
         if renewable_percentage > 90:
-            color = 'green'
+            color = "green"
         elif renewable_percentage > 50:
-            color = 'yellow'
+            color = "yellow"
         else:
-            color = 'red'
+            color = "red"
 
         click.secho("Fuel mix as of " + time, fg="blue", bold=True)
         mix_bar = f"Renewable Mix: [{'⚡' * rounded_pct}{'-' * (20 - rounded_pct)}] "
