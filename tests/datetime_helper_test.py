@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import pytest
-from src.hyper_python.helper.datetime_helper import parse_dates
+from hyper_python.helper.datetime_helper import parse_dates
 
 
 # test cases for the parse_dates function
