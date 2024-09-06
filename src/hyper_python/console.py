@@ -1,7 +1,8 @@
 import click
 import textwrap
+from datetime import datetime
 
-from . import __version__
+from . import __version__, DATETIME_FORMAT
 from .loader import wikipedia
 from .helper import datetime_helper, ascii_helper
 from .ercot import service as ercot_service
@@ -22,6 +23,7 @@ def main(language):
     click.echo(textwrap.fill(extract))
     click.echo(ascii_helper.convert_image_url_to_ascii(thumbnail))
 
+
 @click.command()
 @click.version_option(version=__version__)
 def ercot_command():
@@ -29,16 +31,26 @@ def ercot_command():
     try:
         energy_mix = ercot_service.get_energy_mix()
 
-        time = energy_mix.get_time()
+        time = datetime.strptime(energy_mix.get_time(), DATETIME_FORMAT).strftime(
+            "%I:%M %p"
+        )
         total_generation = energy_mix.get_total_generation()
         total_renewable_generation = energy_mix.get_renewable_generation()
         renewable_percentage = energy_mix.get_renewable_percentage()
 
-        click.secho(time, fg="blue")
+        mix_len = 10
+        rounded_pct = int(renewable_percentage // 5)
+        if renewable_percentage > 90:
+            color = 'green'
+        elif renewable_percentage > 50:
+            color = 'yellow'
+        else:
+            color = 'red'
 
-        click.secho(f"Total Gen: {total_generation:.1f} MW", fg="red")
-        click.secho(f"Renewable Gen: {total_renewable_generation:.1f} MW", fg="green")
-        click.secho(f"Renewable Mix: {renewable_percentage:.1f}%", fg="yellow")
+        click.secho("Fuel mix as of " + time, fg="blue", bold=True)
+        click.secho(
+            f"Renewable Mix: [{'⚡' * rounded_pct}{'-' * (20 - rounded_pct)}] "
+            f"{total_renewable_generation:.0f}/{total_generation:.0f} ({renewable_percentage:.1f}%)", fg=color)
     except Exception as error:
         message = str(error)
         raise click.ClickException(message)

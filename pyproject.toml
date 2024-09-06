@@ -20,6 +20,8 @@ pytest = "^8.3.2"
 pytest-cov = "^5.0.0"
 coverage = "^7.6.1"
 pytest-mock = "^3.14.0"
+black = "^24.8.0"
+pylint = "^3.2.7"
 
 [build-system]
 requires = ["poetry-core"]
